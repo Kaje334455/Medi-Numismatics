@@ -27,8 +27,12 @@
         font-weight: bold;
       }
 
+      nav {
+        display: flex;
+        gap: 15px;
+      }
+
       nav a {
-        margin: 0 15px;
         text-decoration: none;
         color: #333;
         font-weight: bold;
@@ -42,22 +46,14 @@
       .hero {
         text-align: center;
         padding: 20px 35px;
-        background: #e0f7fa; /* Placeholder background */
-        margin: 0;
+        background: #322a25;
       }
 
       .hero img {
-        width: 100%; /* Ensures the image spans the full width */
-        max-height: 500px; /* Caps the height at 400px */
-        height: auto; /* Maintains the aspect ratio */
-        display: block; /* Removes space below the image */
-        object-fit: cover; /* Ensures the image fills the container */
-      }
-
-      .hero h1 {
-        font-size: 32px;
-        color: #004d40;
-        margin-bottom: 10px;
+        width: 100%;
+        max-height: 500px;
+        height: auto;
+        object-fit: cover;
       }
 
       /* About Section */
@@ -69,49 +65,52 @@
       .about h2 {
         font-size: 28px;
         margin-bottom: 15px;
-        margin-left: 12px;
       }
 
       .about p {
         font-size: 18px;
         line-height: 1.6;
-        margin-left: 12px;
       }
 
       /* Pieces Section */
       .pieces {
         padding: 40px 20px;
-        background-color: #f9f9f9;
+        background: #322a25;
       }
 
       .pieces h2 {
         font-size: 28px;
         margin-bottom: 20px;
-        margin-left: 12px;
+        color: white;
+      }
+
+      .pieces-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
       }
 
       .piece-item {
-        display: inline-block;
-        width: 31.1%;
-        margin: 1%;
-        text-align: left;
+        flex: 1 1 calc(33.333% - 20px); /* Three items per row with spacing */
+        box-sizing: border-box;
       }
 
       .piece-item img {
         max-width: 100%;
         height: auto;
-        border: 1px solid #ddd;
+        border: 1px solid #ffffff;
         margin-bottom: 10px;
       }
 
       .piece-item h3 {
         font-size: 20px;
         margin: 10px 0;
+        color: white;
       }
 
       .piece-item p {
         font-size: 16px;
-        color: #555;
+        color: rgb(181, 181, 181);
       }
 
       /* Interact Section */
@@ -124,15 +123,15 @@
       .interact h2 {
         font-size: 28px;
         margin-bottom: 20px;
-        margin-left: 12px;
       }
 
       .interact p {
         font-size: 18px;
         color: #888;
-        margin-left: 12px;
         text-align: center;
       }
+
+      /* Footer */
       footer {
         background-color: #f0f0f0; /* Soft background color for the footer */
         padding: 40px 30px; /* Padding as per your requirement */
@@ -185,6 +184,54 @@
         margin-top: 20px;
         color: #666;
       }
+
+      /* Responsive Styles */
+      @media (max-width: 1024px) {
+        .pieces-container {
+          flex-wrap: wrap;
+        }
+        .piece-item {
+          flex: 1 1 calc(50% - 20px); /* Two items per row */
+        }
+      }
+
+      @media (max-width: 768px) {
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+        }
+
+        nav {
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+
+        .piece-item {
+          flex: 1 1 100%; /* Single column layout */
+        }
+
+        .about p,
+        .interact p {
+          font-size: 16px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero img {
+          max-height: 300px;
+        }
+
+        .about h2,
+        .pieces h2,
+        .interact h2 {
+          font-size: 22px;
+        }
+
+        footer ul li {
+          font-size: 14px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -200,9 +247,7 @@
 
     <!-- Hero Section -->
     <section class="hero">
-      <!-- Replace placeholder with your actual hero image -->
       <img src="/Imgs/Numastics hero image-Camera.png" alt="Hero Image" />
-      <!-- Note: Replace placeholder-hero.jpg with your actual image path -->
     </section>
 
     <!-- About Section -->
@@ -227,47 +272,54 @@
     <!-- Pieces Section -->
     <section id="pieces" class="pieces">
       <h2>Pieces</h2>
-      <div class="piece-item">
-        <h3>Aureus de Marc Aurèle</h3>
-        <img src="/Imgs/Aureus de Marc Aurèle-Camera.png" alt="Piece 1 Image" />
-        <p>
-          The Aureus is a gold coin from ancient Rome, made during the reign of
-          Emperor Marcus Aurelius, who is famous for being a wise ruler and
-          philosopher. This coin was often used for big purchases or to pay
-          soldiers. It showed images of the emperor to remind people of who was
-          in charge. Imagine using a coin like this to pay for a Roman feast or
-          armor for a soldier—it was a piece of history in your pocket! Today,
-          it stands as a symbol of the wealth and power of the Roman Empire.
-        </p>
-      </div>
-      <div class="piece-item">
-        <h3>Byzantine Solidus</h3>
-        <img src="/Imgs/Byzantine-Camera.png" alt="Piece 2 Image" />
-        <p>
-          The Byzantine Solidus is a gold coin used in the Eastern Roman Empire,
-          which lasted long after the fall of Rome. It was an important coin for
-          trade and symbolized the wealth and power of the empire. This coin
-          often featured an image of the emperor on one side and a Christian
-          symbol on the other, showing how religion and leadership were deeply
-          connected in Byzantine culture. Imagine it as the "dollar" of the
-          ancient world—widely accepted and trusted for centuries!
-        </p>
-      </div>
-      <div class="piece-item">
-        <h3>Tétradrachme d'Antigone Doso</h3>
-        <img
-          src="/Imgs/Tétradrachme d'Antigone Doson-Camera.png"
-          alt="Piece 3 Image"
-        />
-        <p>
-          The Tétradrachme is a large silver coin from ancient Greece, used
-          during the reign of Antigone III Doson, a king of Macedonia over 2,000
-          years ago. This coin shows the strong connection between money and
-          power in ancient Greece, often featuring the image of a ruler or a
-          Greek god. Think of it as a symbol of how kings showed off their
-          strength and how people traded for goods like olives, wine, and
-          pottery in ancient markets.
-        </p>
+      <div class="pieces-container">
+        <div class="piece-item">
+          <h3>Aureus de Marc Aurèle</h3>
+          <img
+            src="/Imgs/Aureus de Marc Aurèle-Camera.png"
+            alt="Piece 1 Image"
+          />
+          <p>
+            The Aureus is a gold coin from ancient Rome, made during the reign
+            of Emperor Marcus Aurelius, who is famous for being a wise ruler and
+            philosopher. This coin was often used for big purchases or to pay
+            soldiers. It showed images of the emperor to remind people of who
+            was in charge. Imagine using a coin like this to pay for a Roman
+            feast or armor for a soldier—it was a piece of history in your
+            pocket! Today, it stands as a symbol of the wealth and power of the
+            Roman Empire.
+          </p>
+        </div>
+        <div class="piece-item">
+          <h3>Byzantine Solidus</h3>
+          <img src="/Imgs/Byzantine-Camera.png" alt="Piece 2 Image" />
+          <p>
+            The Byzantine Solidus is a gold coin used in the Eastern Roman
+            Empire, which lasted long after the fall of Rome. It was an
+            important coin for trade and symbolized the wealth and power of the
+            empire. This coin often featured an image of the emperor on one side
+            and a Christian symbol on the other, showing how religion and
+            leadership were deeply connected in Byzantine culture. Imagine it as
+            the "dollar" of the ancient world—widely accepted and trusted for
+            centuries!
+          </p>
+        </div>
+        <div class="piece-item">
+          <h3>Tétradrachme d'Antigone Doso</h3>
+          <img
+            src="/Imgs/Tétradrachme d'Antigone Doson-Camera.png"
+            alt="Piece 3 Image"
+          />
+          <p>
+            The Tétradrachme is a large silver coin from ancient Greece, used
+            during the reign of Antigone III Doson, a king of Macedonia over
+            2,000 years ago. This coin shows the strong connection between money
+            and power in ancient Greece, often featuring the image of a ruler or
+            a Greek god. Think of it as a symbol of how kings showed off their
+            strength and how people traded for goods like olives, wine, and
+            pottery in ancient markets.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -277,6 +329,7 @@
       <p>This section is still a work in progress.</p>
     </section>
 
+    <!-- Footer -->
     <!-- Footer -->
     <footer>
       <div class="footer-content">
