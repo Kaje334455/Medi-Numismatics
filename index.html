@@ -3,9 +3,311 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Mediterranean Numismatics</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Header Styles */
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background-color: #f4f4f4;
+        border-bottom: 1px solid #ddd;
+      }
+
+      header .logo {
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      nav a {
+        margin: 0 15px;
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+      }
+
+      nav a:hover {
+        color: #0077b6;
+      }
+
+      /* Hero Section */
+      .hero {
+        text-align: center;
+        padding: 20px 35px;
+        background: #e0f7fa; /* Placeholder background */
+        margin: 0;
+      }
+
+      .hero img {
+        width: 100%; /* Ensures the image spans the full width */
+        max-height: 500px; /* Caps the height at 400px */
+        height: auto; /* Maintains the aspect ratio */
+        display: block; /* Removes space below the image */
+        object-fit: cover; /* Ensures the image fills the container */
+      }
+
+      .hero h1 {
+        font-size: 32px;
+        color: #004d40;
+        margin-bottom: 10px;
+      }
+
+      /* About Section */
+      .about {
+        padding: 40px 20px;
+        background-color: #fff;
+      }
+
+      .about h2 {
+        font-size: 28px;
+        margin-bottom: 15px;
+        margin-left: 12px;
+      }
+
+      .about p {
+        font-size: 18px;
+        line-height: 1.6;
+        margin-left: 12px;
+      }
+
+      /* Pieces Section */
+      .pieces {
+        padding: 40px 20px;
+        background-color: #f9f9f9;
+      }
+
+      .pieces h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+        margin-left: 12px;
+      }
+
+      .piece-item {
+        display: inline-block;
+        width: 31.1%;
+        margin: 1%;
+        text-align: left;
+      }
+
+      .piece-item img {
+        max-width: 100%;
+        height: auto;
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+      }
+
+      .piece-item h3 {
+        font-size: 20px;
+        margin: 10px 0;
+      }
+
+      .piece-item p {
+        font-size: 16px;
+        color: #555;
+      }
+
+      /* Interact Section */
+      .interact {
+        padding: 40px 20px;
+        background-color: #fff;
+        text-align: left;
+      }
+
+      .interact h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+        margin-left: 12px;
+      }
+
+      .interact p {
+        font-size: 18px;
+        color: #888;
+        margin-left: 12px;
+        text-align: center;
+      }
+      footer {
+        background-color: #f0f0f0; /* Soft background color for the footer */
+        padding: 40px 30px; /* Padding as per your requirement */
+        margin-top: 40px;
+      }
+
+      .footer-container {
+        max-width: 1200px; /* Limits width to prevent stretching too far */
+        margin: 0 auto; /* Centers the content */
+        padding: 0 20px; /* Adds internal padding on the sides */
+        text-align: left; /* Aligns content to the left for a professional look */
+      }
+
+      footer h4 {
+        font-size: 20px;
+        color: #005f5f; /* Matches your color scheme */
+        margin-bottom: 20px;
+        font-weight: bold;
+      }
+
+      footer ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        font-size: 16px;
+        color: #333;
+      }
+
+      footer ul li {
+        margin-bottom: 10px;
+        line-height: 1.6;
+      }
+
+      footer ul li strong {
+        color: #005f5f; /* Highlight for section titles */
+      }
+
+      footer a {
+        color: #005f5f; /* Accent color for links */
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      footer p {
+        font-size: 14px;
+        margin-top: 20px;
+        color: #666;
+      }
+    </style>
   </head>
   <body>
-    <h1>Take FLight</h1>
+    <!-- Header -->
+    <header>
+      <div class="logo">Mediterranean Numismatics</div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#pieces">Pieces</a>
+        <a href="#interact">Interact</a>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <!-- Replace placeholder with your actual hero image -->
+      <img src="/Imgs/Numastics hero image-Camera.png" alt="Hero Image" />
+      <!-- Note: Replace placeholder-hero.jpg with your actual image path -->
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <h2>About</h2>
+      <p>
+        Mediterranean Numismatics is all about teaching kids like you the
+        amazing stories behind ancient coins from the Mediterranean region.
+        These coins were not just money—they were tools that helped people trade
+        goods, spread ideas, and show the power of their kings and emperors. In
+        ancient times, coins like the Byzantine Solidus, the Greek Tétradrachme,
+        and the Roman Aureus were more than just shiny pieces of metal. They
+        were used in busy marketplaces, carried on long trading journeys, and
+        sometimes even made to celebrate big events or powerful rulers. Today,
+        even though we use digital money, these coins help us uncover the lives
+        and cultures of people from thousands of years ago. At Mediterranean
+        Numismatics, we make history exciting and show how something as small as
+        a coin can hold a big story!
+      </p>
+    </section>
+
+    <!-- Pieces Section -->
+    <section id="pieces" class="pieces">
+      <h2>Pieces</h2>
+      <div class="piece-item">
+        <h3>Aureus de Marc Aurèle</h3>
+        <img src="/Imgs/Aureus de Marc Aurèle-Camera.png" alt="Piece 1 Image" />
+        <p>
+          The Aureus is a gold coin from ancient Rome, made during the reign of
+          Emperor Marcus Aurelius, who is famous for being a wise ruler and
+          philosopher. This coin was often used for big purchases or to pay
+          soldiers. It showed images of the emperor to remind people of who was
+          in charge. Imagine using a coin like this to pay for a Roman feast or
+          armor for a soldier—it was a piece of history in your pocket! Today,
+          it stands as a symbol of the wealth and power of the Roman Empire.
+        </p>
+      </div>
+      <div class="piece-item">
+        <h3>Byzantine Solidus</h3>
+        <img src="/Imgs/Byzantine-Camera.png" alt="Piece 2 Image" />
+        <p>
+          The Byzantine Solidus is a gold coin used in the Eastern Roman Empire,
+          which lasted long after the fall of Rome. It was an important coin for
+          trade and symbolized the wealth and power of the empire. This coin
+          often featured an image of the emperor on one side and a Christian
+          symbol on the other, showing how religion and leadership were deeply
+          connected in Byzantine culture. Imagine it as the "dollar" of the
+          ancient world—widely accepted and trusted for centuries!
+        </p>
+      </div>
+      <div class="piece-item">
+        <h3>Tétradrachme d'Antigone Doso</h3>
+        <img
+          src="/Imgs/Tétradrachme d'Antigone Doson-Camera.png"
+          alt="Piece 3 Image"
+        />
+        <p>
+          The Tétradrachme is a large silver coin from ancient Greece, used
+          during the reign of Antigone III Doson, a king of Macedonia over 2,000
+          years ago. This coin shows the strong connection between money and
+          power in ancient Greece, often featuring the image of a ruler or a
+          Greek god. Think of it as a symbol of how kings showed off their
+          strength and how people traded for goods like olives, wine, and
+          pottery in ancient markets.
+        </p>
+      </div>
+    </section>
+
+    <!-- Interact Section -->
+    <section id="interact" class="interact">
+      <h2>Interact</h2>
+      <p>This section is still a work in progress.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <h4>Sources and Acknowledgments</h4>
+        <ul>
+          <li>
+            <strong>Musée Saint-Raymond:</strong>
+            Tetradrachm of Antigonos III Doson and other pieces.
+            <a
+              href="https://saintraymond.toulouse.fr/Tetradrachme-d-Antigone-III-Doson_a904.html"
+              target="_blank"
+            >
+              Learn more
+            </a>
+          </li>
+          <li>
+            <strong>Museum of the Biecz Land:</strong>
+            Other historical artifacts.
+            <a
+              href="https://muzea.malopolska.pl/en/objects-list/325"
+              target="_blank"
+            >
+              Learn more
+            </a>
+          </li>
+        </ul>
+        <p>
+          Website hosted on
+          <a href="https://github.com/" target="_blank">GitHub Pages</a>.
+        </p>
+      </div>
+    </footer>
   </body>
 </html>
