@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mediterranean Numismatics</title>
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+    ></script>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -91,7 +95,7 @@
       }
 
       .piece-item {
-        flex: 1 1 calc(33.333% - 20px); /* Three items per row with spacing */
+        flex: 1 1 calc(33.333% - 20px);
         box-sizing: border-box;
       }
 
@@ -113,41 +117,205 @@
         color: rgb(181, 181, 181);
       }
 
-      /* Interact Section */
+      /* Carousel Styling */
+      .carousel {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: auto; /* Keeps the aspect ratio */
+      }
+
+      .carousel-track {
+        display: flex;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .carousel img {
+        width: 100%;
+        max-width: 100%; /* Ensure the image takes up the full width of the container */
+        object-fit: cover; /* Ensures the image covers the entire space */
+        flex-shrink: 0; /* Prevent images from shrinking */
+      }
+
+      .carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        z-index: 10;
+      }
+
+      .carousel-btn.prev {
+        left: 10px;
+      }
+
+      .carousel-btn.next {
+        right: 10px;
+      }
+
+      /* Interaction Section */
       .interact {
         padding: 40px 20px;
-        background-color: #fff;
-        text-align: left;
+        text-align: center;
+        background-color: #1f1f1f;
       }
 
       .interact h2 {
         font-size: 28px;
         margin-bottom: 20px;
+        color: #ffffff;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bold;
       }
 
-      .interact p {
-        font-size: 18px;
-        color: #888;
+      .model-viewer-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .model-viewer-wrapper {
+        background-color: #2a201c;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        padding: 15px;
         text-align: center;
+        flex: 1 1 280px;
+        transition: transform 0.3s ease;
+      }
+
+      .model-viewer-wrapper:hover {
+        transform: scale(1.05);
+      }
+
+      model-viewer {
+        width: 100%;
+        height: 300px;
+        border-radius: 8px;
+        background-color: #333;
+      }
+
+      .qr-code-section {
+        margin-top: 10px;
+        text-align: center;
+      }
+
+      .qr-code {
+        max-width: 150px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        padding: 5px;
+        background-color: white;
+      }
+
+      .ar-button {
+        margin-top: 10px;
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #0077b6;
+        color: white;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s ease;
+      }
+
+      .ar-button:hover {
+        background-color: #005f8b;
+        transform: scale(1.05);
+      }
+
+      .model-description {
+        margin-top: 10px;
+        font-size: 14px;
+        color: #ddd;
+        line-height: 1.5;
+      }
+
+      /* Modal Styles */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+      }
+
+      .modal-content {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        position: relative;
+        width: 300px;
+      }
+
+      .close-button {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        cursor: pointer;
+        font-size: 18px;
+      }
+
+      .placeholder {
+        color: gray;
+        font-size: 14px;
+        margin-top: 10px;
+      }
+
+      .qr-code-modal {
+        max-width: 100%;
+        margin-top: 10px;
+        border-radius: 8px;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        .model-viewer-wrapper {
+          flex: 1 1 100%;
+        }
+
+        .ar-button {
+          width: 100%;
+          padding: 12px 20px;
+        }
+
+        .qr-code {
+          max-width: 120px;
+        }
       }
 
       /* Footer */
       footer {
-        background-color: #f0f0f0; /* Soft background color for the footer */
-        padding: 40px 30px; /* Padding as per your requirement */
+        background-color: #f0f0f0;
+        padding: 40px 30px;
         margin-top: 40px;
       }
 
       .footer-container {
-        max-width: 1200px; /* Limits width to prevent stretching too far */
-        margin: 0 auto; /* Centers the content */
-        padding: 0 20px; /* Adds internal padding on the sides */
-        text-align: left; /* Aligns content to the left for a professional look */
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        text-align: left;
       }
 
       footer h4 {
         font-size: 20px;
-        color: #005f5f; /* Matches your color scheme */
+        color: #005f5f;
         margin-bottom: 20px;
         font-weight: bold;
       }
@@ -166,11 +334,11 @@
       }
 
       footer ul li strong {
-        color: #005f5f; /* Highlight for section titles */
+        color: #005f5f;
       }
 
       footer a {
-        color: #005f5f; /* Accent color for links */
+        color: #005f5f;
         text-decoration: none;
         font-weight: bold;
       }
@@ -191,7 +359,7 @@
           flex-wrap: wrap;
         }
         .piece-item {
-          flex: 1 1 calc(50% - 20px); /* Two items per row */
+          flex: 1 1 calc(50% - 20px);
         }
       }
 
@@ -208,7 +376,7 @@
         }
 
         .piece-item {
-          flex: 1 1 100%; /* Single column layout */
+          flex: 1 1 100%;
         }
 
         .about p,
@@ -275,10 +443,15 @@
       <div class="pieces-container">
         <div class="piece-item">
           <h3>Aureus de Marc Aurèle</h3>
-          <img
-            src="./Imgs/Aureus de Marc Aurèle-Camera.png"
-            alt="Piece 1 Image"
-          />
+          <div class="carousel">
+            <div class="carousel-track">
+              <img src="./Imgs/Aureus-ImG1.png" alt="Aureus Image 1" />
+              <img src="./Imgs/Aureus-imG2.png" alt="Aureus Image 2" />
+              <img src="./Imgs/Aureus-imG3.png" alt="Aureus Image 3" />
+            </div>
+            <button class="carousel-btn prev">◀</button>
+            <button class="carousel-btn next">▶</button>
+          </div>
           <p>
             The Aureus is a gold coin from ancient Rome, made during the reign
             of Emperor Marcus Aurelius, who is famous for being a wise ruler and
@@ -292,7 +465,15 @@
         </div>
         <div class="piece-item">
           <h3>Byzantine Solidus</h3>
-          <img src="./Imgs/Byzantine-Camera.png" alt="Piece 2 Image" />
+          <div class="carousel">
+            <div class="carousel-track">
+              <img src="./Imgs/Byzantine-Camera.png" alt="Aureus Image 1" />
+              <img src="./Imgs/Byzantine-img2.png" alt="Aureus Image 2" />
+              <img src="./Imgs/Byzantine-img3.png" alt="Aureus Image 3" />
+            </div>
+            <button class="carousel-btn prev">◀</button>
+            <button class="carousel-btn next">▶</button>
+          </div>
           <p>
             The Byzantine Solidus is a gold coin used in the Eastern Roman
             Empire, which lasted long after the fall of Rome. It was an
@@ -306,10 +487,15 @@
         </div>
         <div class="piece-item">
           <h3>Tétradrachme d'Antigone Doso</h3>
-          <img
-            src="./Imgs/Tétradrachme d'Antigone Doson-Camera.png"
-            alt="Piece 3 Image"
-          />
+          <div class="carousel">
+            <div class="carousel-track">
+              <img src="./Imgs/Tetradrachmen-Img.png" alt="Aureus Image 1" />
+              <img src="./Imgs/Tetradrachmen-IMG2.png" alt="Aureus Image 2" />
+              <img src="./Imgs/tetradrachmen-Img3.png" alt="Aureus Image 3" />
+            </div>
+            <button class="carousel-btn prev">◀</button>
+            <button class="carousel-btn next">▶</button>
+          </div>
           <p>
             The Tétradrachme is a large silver coin from ancient Greece, used
             during the reign of Antigone III Doson, a king of Macedonia over
@@ -324,12 +510,98 @@
     </section>
 
     <!-- Interact Section -->
-    <section id="interact" class="interact">
-      <h2>Interact</h2>
-      <p>This section is still a work in progress.</p>
-    </section>
+    <section class="interact">
+      <h2>Explore in 3D & AR</h2>
+      <div class="model-viewer-container">
+        <!-- Aureus Model -->
+        <div class="model-viewer-wrapper">
+          <model-viewer
+            src="/GLBS/aureus_de_marc_aurele.glb"
+            alt="Aureus de Marc Aurèle"
+            ar
+            ar-modes="webxr scene-viewer quick-look"
+            camera-controls
+            shadow-intensity="1"
+            autoplay
+            poster="aureus_poster.jpg"
+          >
+          </model-viewer>
+          <!-- AR Button -->
+          <button
+            class="ar-button"
+            slot="ar-button"
+            onclick="showQRCode('/QRCODEIMGS/aureus_de_marc_aurele-QRCODE.png', 'Aureus de Marc Aurèle')"
+          >
+            View in AR
+          </button>
+          <p class="model-description">
+            Aureus de Marc Aurèle: Explore the intricacies of this ancient coin.
+          </p>
+        </div>
 
-    <!-- Footer -->
+        <!-- Byzantine Solidus Model -->
+        <div class="model-viewer-wrapper">
+          <model-viewer
+            src="/GLBS/byzantine_solidus.glb"
+            alt="Byzantine Solidus"
+            ar
+            ar-modes="webxr scene-viewer quick-look"
+            camera-controls
+            shadow-intensity="1"
+            autoplay
+            poster="byzantine_poster.jpg"
+          >
+          </model-viewer>
+          <!-- AR Button -->
+          <button
+            class="ar-button"
+            slot="ar-button"
+            onclick="showQRCode('/QRCODEIMGS/byzantine_solidus-QRCODE.png', 'Byzantine Solidus')"
+          >
+            View in AR
+          </button>
+          <p class="model-description">
+            Byzantine Solidus: A glimpse into Byzantine history and culture.
+          </p>
+        </div>
+
+        <!-- Tetradrachme Model -->
+        <div class="model-viewer-wrapper">
+          <model-viewer
+            src="/GLBS/tetradrachme_dantigone_doson.glb"
+            alt="Tetradrachme of Antigonos Doson"
+            ar
+            ar-modes="webxr scene-viewer quick-look"
+            camera-controls
+            shadow-intensity="1"
+            autoplay
+            poster="tetradrachme_poster.jpg"
+          >
+          </model-viewer>
+          <!-- AR Button -->
+          <button
+            class="ar-button"
+            slot="ar-button"
+            onclick="showQRCode('/QRCODEIMGS/tetradrachme-QRCODE.png', 'Tetradrachme of Antigonos Doson')"
+          >
+            View in AR
+          </button>
+          <p class="model-description">
+            Tetradrachme of Antigonos Doson: Discover the artistry of ancient
+            Greece.
+          </p>
+        </div>
+      </div>
+
+      <!-- QR Code Modal -->
+      <div id="qr-modal" class="qr-modal" style="display: none">
+        <div class="qr-modal-content">
+          <span class="close-modal" onclick="closeQRCode()">×</span>
+          <h3 id="qr-modal-title"></h3>
+          <img id="qr-code-image" src="" alt="QR Code" />
+        </div>
+      </div>
+    </section>
     <!-- Footer -->
     <footer>
       <div class="footer-content">
@@ -362,5 +634,88 @@
         </p>
       </div>
     </footer>
+    <script>
+      document.querySelectorAll(".carousel").forEach((carousel) => {
+        const track = carousel.querySelector(".carousel-track");
+        const nextButton = carousel.querySelector(".next");
+        const prevButton = carousel.querySelector(".prev");
+        const images = track.children;
+        let currentIndex = 0; // Start at the first image
+
+        // Update track position to show the correct image
+        const updateCarousel = () => {
+          track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        };
+
+        // Next button click
+        nextButton.addEventListener("click", () => {
+          if (currentIndex < images.length - 1) {
+            currentIndex++;
+            updateCarousel();
+          }
+        });
+
+        // Previous button click
+        prevButton.addEventListener("click", () => {
+          if (currentIndex > 0) {
+            currentIndex--;
+            updateCarousel();
+          }
+        });
+
+        // Initialize carousel position
+        updateCarousel();
+      });
+
+      // AR functionality and QR modal
+      document.addEventListener("DOMContentLoaded", () => {
+        const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        const models = document.querySelectorAll(".model-viewer-item");
+
+        models.forEach((model) => {
+          const arButton = model.querySelector(".ar-button");
+
+          if (!arButton) return; // Skip if AR button is missing
+
+          // Add event listener for the AR button
+          arButton.addEventListener("click", () => {
+            showModal("Put img here", "Placeholder Title"); // Show modal with placeholder text
+          });
+        });
+      });
+
+      // Modal functionality for QR codes
+      function showModal(qrCodeSrc, modelTitle) {
+        // Create modal element
+        const modal = document.createElement("div");
+        modal.classList.add("modal-overlay");
+
+        // Modal content with placeholder image/text
+        modal.innerHTML = `
+          <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>${modelTitle}</h3>
+            <div class="placeholder">
+              ${qrCodeSrc}
+            </div>
+          </div>
+        `;
+
+        document.body.appendChild(modal);
+
+        // Add close button functionality
+        const closeButton = modal.querySelector(".close-button");
+        closeButton.addEventListener("click", () => {
+          document.body.removeChild(modal);
+        });
+
+        // Close modal on outside click
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) {
+            document.body.removeChild(modal);
+          }
+        });
+      }
+    </script>
   </body>
 </html>
