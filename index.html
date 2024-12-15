@@ -464,24 +464,29 @@
     </section>
 
     <!-- Interact Section -->
-    <section class="interact">
+    <section id="interact" class="interact">
       <h2>Explore in 3D & AR</h2>
       <div class="model-viewer-container">
         <!-- Aureus Model -->
         <div class="model-viewer-wrapper">
           <model-viewer
             src="/GLBS/aureus_de_marc_aurele.glb"
+            ios-src="/GLBS/aureus_de_marc_aurele.usdz"
             alt="Aureus de Marc Aurèle"
             ar
             ar-modes="webxr scene-viewer quick-look"
             camera-controls
             shadow-intensity="1"
             autoplay
-            poster="aureus_poster.jpg"
+            poster="poster-1.webp"
+            aria-label="3D model of Aureus de Marc Aurèle"
           >
+            Your browser does not support this feature. Please use a compatible
+            browser to view 3D models.
           </model-viewer>
           <p class="model-description">
-            Aureus de Marc Aurèle: Explore the intricacies of this ancient coin.
+            <strong>Aureus de Marc Aurèle:</strong> Explore the intricacies of
+            this ancient coin.
           </p>
         </div>
 
@@ -489,17 +494,22 @@
         <div class="model-viewer-wrapper">
           <model-viewer
             src="/GLBS/byzantine_solidus.glb"
+            ios-src="/GLBS/byzantine_solidus.usdz"
             alt="Byzantine Solidus"
             ar
             ar-modes="webxr scene-viewer quick-look"
             camera-controls
             shadow-intensity="1"
             autoplay
-            poster="byzantine_poster.jpg"
+            poster="poster-2.webp"
+            aria-label="3D model of Byzantine Solidus"
           >
+            Your browser does not support this feature. Please use a compatible
+            browser to view 3D models.
           </model-viewer>
           <p class="model-description">
-            Byzantine Solidus: A glimpse into Byzantine history and culture.
+            <strong>Byzantine Solidus:</strong> A glimpse into Byzantine history
+            and culture.
           </p>
         </div>
 
@@ -507,22 +517,27 @@
         <div class="model-viewer-wrapper">
           <model-viewer
             src="/GLBS/tetradrachme_dantigone_doson.glb"
+            ios-src="/GLBS/tetradrachme_dantigone_doson.usdz"
             alt="Tetradrachme of Antigonos Doson"
             ar
             ar-modes="webxr scene-viewer quick-look"
             camera-controls
             shadow-intensity="1"
             autoplay
-            poster="tetradrachme_poster.jpg"
+            poster="poster-3.webp"
+            aria-label="3D model of Tetradrachme of Antigonos Doson"
           >
+            Your browser does not support this feature. Please use a compatible
+            browser to view 3D models.
           </model-viewer>
           <p class="model-description">
-            Tetradrachme of Antigonos Doson: Discover the artistry of ancient
-            Greece.
+            <strong>Tetradrachme of Antigonos Doson:</strong> Discover the
+            artistry of ancient Greece.
           </p>
         </div>
       </div>
     </section>
+
     <!-- Footer -->
     <footer>
       <div class="footer-content">
